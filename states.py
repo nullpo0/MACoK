@@ -13,17 +13,22 @@ class CharacaterProfile(TypedDict):
 
 
 class MainState(TypedDict):
-    category: str # input_node 에서 카테고리 지정
-    scene_num: int # input_node 에서 scene의 개수를 지정
+    category: str
+    scene_num: int
+    title: str
     world: str
     characters: List[CharacaterProfile]
-    scenes: Annotated[List[str], add] # 생성된 scene을 저장    
+    scenes: Annotated[List[str], add]
+    summaries: Annotated[List[str], add]
     
     
 class SceneState(TypedDict):
-    curr_scene: int # 현재 scene의 위치
-    verification_result: str # 검증 결과
-    evaluation_result: str # 평가 결과
+    curr_scene_num: int 
+    prev_scene_keywords: List[str]
+    curr_scene_keywords: List[str]
+    curr_scene: str
+    verification_result: str
+    evaluation_result: str
     
     
 
