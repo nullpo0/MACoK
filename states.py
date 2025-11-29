@@ -1,4 +1,4 @@
-from typing import TypedDict, Annotated, List
+from typing import TypedDict, Annotated, List, Optional
 from operator import add
 
 
@@ -12,24 +12,22 @@ class CharacaterProfile(TypedDict):
     relationships: dict[str, str]
 
 
-class MainState(TypedDict):
+class State(TypedDict):
     category: str
-    scene_num: int
+    total_scene_num: int
+    curr_scene_num: int 
     title: str
     world: str
     characters: List[CharacaterProfile]
+    prev_scene_keyword: str
+    curr_scene_keywords: List[str]
     scenes: Annotated[List[str], add]
     summaries: Annotated[List[str], add]
-    
-    
-class SceneState(TypedDict):
-    curr_scene_num: int 
-    prev_scene_keywords: List[str]
-    curr_scene_keywords: List[str]
     curr_scene: str
-    verification_result: str
+    verification_result: str                      
+    verification_reason: Optional[str]
     evaluation_result: str
-    
+    evaluation_reason: Optional[str]
     
 
     
